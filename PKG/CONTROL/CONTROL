@@ -1,0 +1,14 @@
+Package: aucrEdit
+Files: bin/aucredit apps/Applications/aucredit.desktop pics/aucredit.png pics/aucreditalphabet.png pics/aucredittext.png  pics/aucreditqt.png help/html/aucredit.html help/html/aucr.html help/html/qtopia.html help/html/edittext.html help/html/aucrimplement.html help/html/qtopiacompile.html help/html/editalphabet.html help/html/qtopiaenvironment.html bin/qtopia-addmimetype ../../home/root/Settings/aucrEdit.conf ../../home/root/Documents/application/x-aucr-alphabet/defaultalphabet.alf ../../home/root/Documents/application/x-aucr-alphabet/defaultalphabet.desktop
+Priority: optional
+Section: qpe/applications
+Version: 2.0
+Architecture: arm
+Maintainer: barry burton <burtobc@acm.org>
+Depends: qpe-base ($QPE_VERSION)
+Description: Text editor with handwritten character entry option.
+ employs AUCR character recognition algorithm
+ to allow a user to edit text files using custom
+ created handwritten alphabets.  Application also
+ includes an AUCR alphabet editing utility to 
+ facilitate the creation of custom alphabets.

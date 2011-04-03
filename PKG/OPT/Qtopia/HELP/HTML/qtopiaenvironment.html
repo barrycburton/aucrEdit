@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Qtopia Development Environment</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">Qtopia</font></a>
+&nbsp;
+<a href="aucr.html">
+<font color="#004faf">AUCR</font></a>
+&nbsp;
+<a href="aucredit.html">
+<font color="#004faf">aucrEdit</font></a>
+</td></tr></table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">about</font></a>
+&nbsp;
+<a href="qtopiaenvironment.html">
+<font color="#004faf">Environment</font></a>
+&nbsp;
+<a href="qtopiacompile.html">
+<font color="#004faf">Compiling</font></a>
+</td></tr></table>
+<h2 align="right"><img align="left" border="0" height="64" width="64" src="aucreditqt.png">Qtopia Development Environment</h2>
+<p align="justify"> 
+To start off with, you need a development machine running some distribution of Linux.  I used Red Hat 9, which worked well, but if you are a Linux snob feel free to use your own choice of distro.  Working on an x86 machine is easiest, as that way you can use the available binary packages for installation, but the source is also available if you choose to use another processor.
+</p><p align="justify">
+To build programs for the Zaurus, you need two main packages.  The first is the Arm cross compiler tool chain.  This used to be available from Sharp, but they have since taken down much of the developer support portion of the Zaurus website.  The tool chain packages may be found on the aucrEdit CDROM, however.  The individual packages in the tool chain that must be installed are:
+<ul>
+<li>binutils-cross-am-2.2.2-0.i386.rpm</li>
+<li>gcc-cross-sa1100-2.95.2-0.i386.rpm</li>
+<li>glibc-arm-2.2.2-0.i386.rpm</li>
+<li>linux-headers-arm-sa1100-2.4.6-3.i386.rpm</li>
+</ul>
+</p><p align="justify">
+The other main package is the Qtopia SDK, which comes in several versions, one of which is free.  The Qtopia documentation is somewhat fuzzy on this issue, and it makes it seem as though many other Trolltech tools, such as Tmake, and Qt/Embedded are needed, but in fact the Qtopia-Free SDK includes Tmake, Qt/Embedded, and everything else you need to build Qtopia programs.  aucrEdit was developed for the Sharp SL-5500 Zaurus, which runs Qtopia 1.5, so it was built with version 1.5 of the SDK.  There are much newer versions of the SDK/API that incorporate much new functionality, but I have no experience with them.  The version of the SDK that was used to build aucrEdit may be found on the CDROM and is:
+<ul>
+<li>qtopia-free-1.5.0-1.i386.rpm</li>
+</ul>
+</p><p align="justify">
+The SDK also includes a Virtual Frame Buffer, which essentially emulates the Zaurus screen and allows you to test programs on the development machine before going to the trouble of packaging them and putting them on the Zaurus.  To run programs on the development mach however, you must compile them for that architecture, but unfortunately modern i386 gcc compilers do not get along with the libraries found in version 1.5 of the Qtopia libraries, and trying to use these compilers will result in mysterious link errors.  To solve this problem, you must install a gcc2.96 compatibility compiler, and then compile with gcc2.96 rather than gcc.  The 2.96 compatibilty compilers were included with my Linux Distribution.
+</p><p align="justify">
+Another useful tool is Qtopia Desktop which lets you transfer files between the development machine and the Zaurus.  I found that the only version of Qtopia Desktop that would work on my machine was 1.5 but this may not always be true.  Unfortunately, version 1.5 of Qtopia Desktop does not correctly set the MIME type of files when transferring them, so they will not show up with the correct icon in the Document view on the Zaurus, and you will have to run the program that is used to open the file, and then instruct the program to open the file, rather than just selecting the file and having the Zaurus know which application to use to open the file (this is because this whole mechanism is based on MIME type).  The package I used is included on the CDROM but you may want to locate a newer version that correctly handles MIME types.
+<ul>
+<li>qtopia-desktop-1.5.tar.gz</li>
+</ul>	
+</p><p align="justify">
+There are also a few other necessary tools.  One is the make-ipks.sh shell script tool that creates the ipk installation file that is necessary to install programs on the Zaurus.  Also you will need two other shell scripts which set environment variables appropriately.  One is dev-arm-qpe.sh which sets the environment variables to build for the Strong Arm architecture found in the Zaurus.  The second is dev-x86-qpe.sh, which set the environment variables for building an x86 based Qtopia executable for running in the Virtual Frame Buffer.
+<ul>
+<li>make-ipks.sh</li>
+<li>dev-arm-qpe.sh</li>
+<li>dev-x86-qpe.sh</li>
+</ul>	
+</p><p align="justify">
+One last note, if you had to install and/or use a compiler other than your plain gcc compiler (such as gcc2.96), you will need to make sure this compiler gets accessed to do the builds.  There are two ways of doing this: the first is to place a symlink named gcc on the path that points to your special gcc version and make sure that the regular gcc binary gets renamed to something else.  This will make your special gcc version always be the compiler invoked by gcc, so while it is the easiest solution, if you still want to access your normal gcc version, you will need to do something different.  In this case you will need to alter the tmake configuration file.  The tmake configuration file used in x86 builds can be found at /opt/Qtopia/tmake/lib/qws/linux-x86-g++/tmake.conf.  you will simply need to edit the TMAKE_CC, TMAKE_CXX, TMAKE_LINK, and TMAKE_LINK_SHLIB fields to call the compiler that you are using.  By default they are simply gcc, so if you want to use gcc2.96, you would just change the values from gcc to gcc2.96 (assuming you have placed the gcc2.96 executable on the path).
+</p>
+</body>
+</html>

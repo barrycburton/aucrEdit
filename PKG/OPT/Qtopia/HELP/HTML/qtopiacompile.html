@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Compiling for Qtopia</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">Qtopia</font></a>
+&nbsp;
+<a href="aucr.html">
+<font color="#004faf">AUCR</font></a>
+&nbsp;
+<a href="aucredit.html">
+<font color="#004faf">aucrEdit</font></a>
+</td></tr></table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">about</font></a>
+&nbsp;
+<a href="qtopiaenvironment.html">
+<font color="#004faf">Environment</font></a>
+&nbsp;
+<a href="qtopiacompile.html">
+<font color="#004faf">Compiling</font></a>
+</td></tr></table>
+<h2 align="right"><img align="left" border="0" height="64" width="64" src="aucreditqt.png">Compiling for Qtopia</h2>
+<p align="justify"> 
+This assumes that you already have a working build environment installed on your development machine.  If not, click on the Environment link and follow those instructions first.
+</p><p align="justify">
+The first step is obviously to write your source code.  After you have all of your source files, you need to create a .pro file, which will be very similar to any other .pro file, so find an example, possibly aucrEdit.pro, which is located on the CDROM, and simply change the values of the source and header fields to contain the names of all your source and header files, and then change the value of the target field to be the name of your binary, save the .pro as &lt;something&gt;.pro.  You will then need to set your environment variables by running dev-arm-qpe.sh if you are making a binary for the Zaurus or dev-x86-qpe.sh if you are making a binary for the Emulator.  Now you need to create a make file from the .pro file using tmake.  The command tmake -o Makefile &lt;something&gt;.pro should get the job done.  Anytime you want to change your target architecture from arm to x86, or vice versa, you will need clean the directory with the command make clean, then delete the make file with rm -f Makefile, then reset the environment with the appropriate shell script, and rerun tmake -o Makefile &lt;something&gt;.pro to create a new appropriate make file.  Once you have your make file, you are ready to go, and all you need to do is enter the command make and your source code will all be compiled and then linked together into a binary.  
+</p><p align="justify">
+If you are going to run in the Emulator, you need to start the emulator with the command qvfb& ( this stands for Qt Virtual Frame Buffer ).  Then you can run your executable, but you must pass the &quot;-qws&quot; flag, since this will be the only Qtopia program running.  Thus the command would be ./&lt;target name&gt; -qws.  Your program should find the running Virtual Frame Buffer and display everything there.
+</p><p align="justify">
+If you are going to run the program on the Zaurus, things are slightly more complicated, because you need to package up the executable so that it will install on the Zaurus.  To do this you need to create the directory structure of the Zaurus under some directory on your machine.  But not the whole directory structure, just the structure of directories you will actually install files into.  You can check out the pkg directory on the CDROM to give you an idea what this will look like.  The Trolltech Qtopia documentation has a decent explanation of the different files you can install and the different places they should go so I won't repeat that here.  Once you have the directory structure set up with all of the necessary files, including a .control file that will provide information about what data the installer should find in the ipk file, you are ready to put the package together.  There is a very convenient shell script called ipkg-build.sh that will all of the necessary dirty work for you to produce a valid .ipk file from the directory structure you have created.  The script takes a single argument that gives the root of the directory structure you created, and your .ipk file will be created in your working directory.  Now you just have to put this file onto the Zaurus using the Qtopia Desktop software, and use the Add/Remove Software package manager to install the .ipk for your program and you are done.
+</p><p>
+here is an overview:
+<ul>
+<li>write source files</li>
+<li>make project (.pro) file</li>
+<li>set environment variables</li>
+<li>compile project file into make file with tmake</li>
+<li>make target binary</li>
+</ul>
+</p><p>
+for running on x86:
+<ul>
+<li>run the Qt Virtual Frame Buffer with qvfb&amp;</li>
+<li>run the application with ./&lt;target name&gt; -qws</li>
+</ul>
+</p><p>
+for running on arm:
+<ul>
+<li>create directory structure including .control file</li>
+<li>create .ipk file with ipkg-build.sh</li>
+<li>move .ipk file to the Zaurus with Qtopia Desktop</li>
+<li>install .ipk on the Zaurus with Add/Remove Software package manager</li>
+</ul>
+</p><p>
+to change target platforms:
+<ul>
+<li>clean the directory with make clean</li>
+<li>delete old make file with rm -f Makefile</li>
+<li>change the environment variables</li>
+<li>create new make file with tmake -o Makfile &lt;something.pro&gt;</li>
+</ul>
+</p>
+</body>
+</html>

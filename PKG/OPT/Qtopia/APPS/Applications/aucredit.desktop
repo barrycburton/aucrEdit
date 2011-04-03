@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=2.0
+Encoding=UTF-8
+Name=aucrEdit
+Comment=Text editor with handwriting entry.
+Exec=aucredit
+Icon=aucredit
+Type=Application
+CanFastload=0
+HidePriveledge=0
+MimeType=text/plain;application/x-aucr-alphabet;

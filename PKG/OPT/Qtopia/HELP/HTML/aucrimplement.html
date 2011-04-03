@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>AUCR API Implementation</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">Qtopia</font></a>
+&nbsp;
+<a href="aucr.html">
+<font color="#004faf">AUCR</font></a>
+&nbsp;
+<a href="aucredit.html">
+<font color="#004faf">aucrEdit</font></a>
+</td></tr></table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="aucr.html">
+<font color="#004faf">about</font></a>
+&nbsp;
+<a href="aucrimplement.html">
+<font color="#004faf">Implementation</font></a>
+</td></tr></table>
+<h2 align="right"><img align="left" border="0" height="64" width="64" src="aucreditalphabet.png">AUCR API Implementation</h2>
+<p align="justify"> 
+aucrEdit uses a new implementation of the AUCR algorithm.  This implementation is written in standard C (ANSI C89 to be precise), and is completely fixed point, such that it can run on small embedded processors which do not feature a floating point unit.  Rather than using floating point emulation functions which perform floating point operations in software on top of fixed point hardware, all of the algorithms used were designed from the ground up to use only fixed point.  The result of this is code which is much more efficient on any platform and which is perfectly happy on very small, slow, processors which completely lack floating point operations.  Each character in an alphabet is described by a string of direction values followed by a string of activity values.  The number of directions and the number activity measures is completely arbitrary, and while all characters in a particular alphabet must have the same number of directions and activity measures, for a new alphabet, any number of either may be used.  In addition to this, any arbitrary number of distinct directions may be used.  This is to say that an alphabet may choose to represent the infinitely many directions found between 0 and 360 degrees as any number of finite directional regions.  aucrEdit creates new alphabets which represent directions with 16 different directional regions and which represent characters with directions for 64 segments and activity measures for 7 different sub-strokes of the character.
+</p><p align="justify">
+Both aucrEdit and the new implementation of the AUCR API are the work of William Confer <a href="mailto:wconfer@eng.auburn.edu">&lt;wconfer@eng.auburn.edu&gt;</a>, Dr. Richard Chapman <a href="mailto:chapman@eng.auburn.edu">&lt;chapman@eng.auburn.edu&gt;</a>, and Barry Burton <a href="mailto:burtobc@acm.org">&lt;burtobc@acm.org&gt;</a>, all of Auburn University.
+</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>about Qtopia</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">Qtopia</font></a>
+&nbsp;
+<a href="aucr.html">
+<font color="#004faf">AUCR</font></a>
+&nbsp;
+<a href="aucredit.html">
+<font color="#004faf">aucrEdit</font></a>
+</td></tr></table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr bgcolor="#E5E5E5" align="center">
+<td width="100%" align="center"> 
+<a href="qtopia.html">
+<font color="#004faf">about</font></a>
+&nbsp;
+<a href="qtopiaenvironment.html">
+<font color="#004faf">Environment</font></a>
+&nbsp;
+<a href="qtopiacompile.html">
+<font color="#004faf">Compiling</font></a>
+</td></tr></table>
+<h2 align="right"><img align="left" border="0" height="64" width="64" src="aucreditqt.png">about Qtopia</h2>
+<p align="justify"> 
+Qtopia is a desktop environment specifically designed for embedded devices.  It was created by Trolltech AS, a Norwegian software company that is best known for the Qt graphics toolkit.  Qt allows GUI programs to quickly written and then compiled for Unix ( X11 ), Macintosh, or Windows platforms, and is the base of the KDE windowing environment that comes with many distributions of Linux.  Qt is a windowing toolkit that includes many C++ classes that allow GUI programs to be easily created.  Qt/Embedded is a version of Qt specifically designed for resource limited embedded devices.  Qt/Embedded has a subset of the functionality and classes found in Qt, simply doing away with the classes that would be too large to include on an embedded device.  Qtopia is window system with a full featured PDA type user interface.  Qtopia runs on top of an embedded Linux kernel, such as the Embedix kernel used in the Zaurus.  Qtopia uses a subset of Qt/Embedded's classes, doing away with the larger classes, as well as the classes which correspond to concepts which violate the PDA user interface, such as the concept of a file system.  Qtopia uses a Document system that user interacts with (in actuality, the Document user interface sits on top of a standard Linux file system).
+</p><p align="justify">
+Developing for Qtopia can be a bit challenging because while the free edition of Qt is very well documented, much of Qtopia is undocumented and Trolltech provides no support for the free edition of the Qtopia SDK.  Many of the tools in the SDK work best if compiled by the compiler that they will be used with for development, so if you feel comfortable compiling the source for the SDK rather than simply installing the binary packages, it can be advantageous to do so.  Also, Qtopia uses a version of Qt/Embedded that is generally about one version behind (i.e. if the newest version of Qt/Embedded released is 3.x then Qtopia will be using 2.x).  So make sure to use the documentation for correct version of Qt/Embedded that is being used by your version of Qtopia.  If you are trying to use a feature that is supported by your version of Qt but are still running into strange compile or link errors, then more than likely it is a feature that was removed from the Qtopia version of Qt/Embedded.  I never found a comprehensive list of these features/classes, though many of them are listed in various parts of the Qtopia documentation.  Another issue to be careful of is the fact that on the Zaurus, relative filenames are accessed off of /home/root rather than the off of the directory containing the executable.  There are numerous other quirks that I ran into and was only able to get around after a lot of brute force, so feel free to email me with any questions that you may run into.  But I am quite sure that there are also plenty of quirks that I did not come up against.
+</p>
+</body>
+</html>

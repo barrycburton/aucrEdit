@@ -1,0 +1,10 @@
+TEMPLATE	= app
+#CONFIG		= qt warn_on debug
+CONFIG		= qt warn_on release
+HEADERS		= aucrEdit.h alfEdit.h textEdit.h editArea.h recogArea.h AUCR.h
+SOURCES		= aucrEdit.cpp alfEdit.cpp textEdit.cpp editArea.cpp recogArea.cpp AUCR.cpp
+INCLUDEPATH	+= $(QPEDIR)/include
+DEPENDPATH	+= $(QPEDIR)/include
+LIBS            += -lqpe
+INTERFACES	=
+TARGET		= aucredit
